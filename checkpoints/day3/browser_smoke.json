@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-11",
+  "url": "http://127.0.0.1:8501",
+  "config": {
+    "seed": 42,
+    "population_size": 40,
+    "generations": 50,
+    "mutation_rate": 0.1
+  },
+  "observed_status": "Lịch hợp lệ",
+  "fitness": [
+    0,
+    4
+  ],
+  "actual_evals": 2000,
+  "observed_runtime_sec": 1.29,
+  "group_actions": [
+    "G01",
+    "G02",
+    "G01"
+  ],
+  "metrics_unchanged_on_filter": true,
+  "download": "C:/Users/loval/Downloads/schedule.csv",
+  "download_verified_in": "checkpoints/day3/artifact_audit.json",
+  "screenshots": [
+    "reports/assets/streamlit_demo.jpg",
+    "reports/assets/streamlit_group.jpg"
+  ],
+  "invalid_input_and_infeasible_cases": "Verified by AppTest, not by mutating sample CSV in browser demo."
+}

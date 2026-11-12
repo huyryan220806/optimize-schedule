@@ -1,0 +1,192 @@
+{
+  "date": "2026-11-11",
+  "dataset_fingerprint": "2ada43c555df95a011a712776652584634f72a6125b491b9b1f48295cadfb5b8",
+  "source_fingerprint": "74643d2eb9f691bf20b2410302566bdbec844bdf157a939f1000d86dca046be0",
+  "benchmark_replay": [
+    {
+      "run": "random_seed_11",
+      "fitness": [
+        2,
+        17
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "random_seed_22",
+      "fitness": [
+        0,
+        14
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "random_seed_33",
+      "fitness": [
+        0,
+        25
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "greedy_seed_11",
+      "fitness": [
+        0,
+        0
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "greedy_seed_22",
+      "fitness": [
+        0,
+        0
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "greedy_seed_33",
+      "fitness": [
+        0,
+        0
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "ga_seed_11",
+      "fitness": [
+        0,
+        3
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "ga_seed_22",
+      "fitness": [
+        0,
+        2
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    },
+    {
+      "run": "ga_seed_33",
+      "fitness": [
+        0,
+        3
+      ],
+      "same_chromosome_config_evaluation_and_history": true,
+      "actual_evals": 2000,
+      "independently_revalidated": true
+    }
+  ],
+  "cli": [
+    {
+      "case": "validate",
+      "args": [
+        "validate",
+        "--data",
+        "data/sample"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "witness",
+      "args": [
+        "validate",
+        "--data",
+        "data/sample",
+        "--schedule",
+        "data/fixtures/sample_witness_schedule.csv"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "solve",
+      "args": [
+        "solve",
+        "--data",
+        "data/sample",
+        "--algorithm",
+        "ga",
+        "--seed",
+        "42",
+        "--out",
+        "results/day3_qa/demo"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "solve_infeasible",
+      "args": [
+        "solve",
+        "--data",
+        "data/sample",
+        "--seed",
+        "7",
+        "--population",
+        "4",
+        "--generations",
+        "0",
+        "--out",
+        "results/day3_qa/short"
+      ],
+      "exit_code": 1
+    },
+    {
+      "case": "invalid_config",
+      "args": [
+        "solve",
+        "--data",
+        "data/sample",
+        "--population",
+        "0",
+        "--out",
+        "results/day3_qa/invalid"
+      ],
+      "exit_code": 2
+    },
+    {
+      "case": "missing_data",
+      "args": [
+        "validate",
+        "--data",
+        "results/day3_qa/missing_dataset"
+      ],
+      "exit_code": 2
+    }
+  ],
+  "ui_download": {
+    "source": "C:\\Users\\loval\\Downloads\\schedule.csv",
+    "saved_copy": "checkpoints/day3/ui_schedule.csv",
+    "events": 24,
+    "groups": [
+      "G01",
+      "G02",
+      "G03",
+      "G04"
+    ],
+    "fitness": [
+      0,
+      4
+    ],
+    "matches_cli_seed42_schedule": true,
+    "sha256": "051a256d94b3f32cafa262883e9483f163c7e495b0d3518a661fd83fa5f25d2a"
+  },
+  "witness_used_in_solvers": false,
+  "notes": "Replay ran alongside pytest/install. Runtime excluded from equality and report; post-hoc revalidation excluded from solver budgets."
+}

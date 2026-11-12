@@ -1,0 +1,7 @@
+room_id,name,capacity,room_type
+R101,Phòng A101,40,lecture
+R102,Phòng A102,36,lecture
+R103,Phòng A103,60,lecture
+LAB1,Lab máy tính 1,42,lab
+LAB2,Lab máy tính 2,36,lab
+LAB3,Lab máy tính 3,25,lab

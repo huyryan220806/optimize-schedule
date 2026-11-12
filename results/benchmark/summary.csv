@@ -1,0 +1,4 @@
+algorithm,feasible_x_of_3,feasible_rate,median_hard,median_soft_feasible_only,median_runtime,median_actual_evals
+ga,3/3,1.0,0.0,3.0,0.5917111000162549,2000.0
+greedy,3/3,1.0,0.0,0.0,0.5235341999796219,2000.0
+random,2/3,0.6666666666666666,0.0,19.5,0.49183280003489926,2000.0

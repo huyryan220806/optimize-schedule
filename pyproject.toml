@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "timetable-ga"
+version = "0.1.0"
+description = "Reproducible GA timetable sprint: independent constraints evaluator"
+requires-python = ">=3.11"
+dependencies = ["pandas>=2.2", "matplotlib>=3.9", "streamlit>=1.67,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.9"]
+
+[project.scripts]
+timetable-ga = "timetable_ga.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

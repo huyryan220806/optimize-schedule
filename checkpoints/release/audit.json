@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-12",
+  "checkout": ".publish/optimize-schedule",
+  "source_files_unchanged": true,
+  "selected_file_count": 90,
+  "selected_payload_bytes_excluding_audit": 1493747,
+  "checked_relative_links": 63,
+  "broken_relative_links": [],
+  "verified_source_snippets": 9,
+  "demo_equal_fields": [
+    "chromosome",
+    "fitness",
+    "config",
+    "dataset_fingerprint",
+    "actual_evals",
+    "hard_breakdown",
+    "soft_raw"
+  ],
+  "demo_fitness": [
+    0,
+    4
+  ],
+  "demo_evaluations": 2000,
+  "demo_final_generation": 49,
+  "user_word_unchanged_sha256": "ba199732390298f252eb65512d9aef7230043db42a89339ba8dd0de9eefc3c6b",
+  "secret_pattern_matches": [],
+  "benchmark_files_identical_to_local": true,
+  "excludes": [
+    ".venv",
+    "cache",
+    "Spec Kit tools/prompts",
+    "old Day 1 copy",
+    "Word builder/intermediates",
+    "local QA outputs",
+    "development Git history"
+  ]
+}

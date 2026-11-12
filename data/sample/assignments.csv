@@ -1,0 +1,13 @@
+assignment_id,course_id,group_id,teacher_id,sessions_per_week,duration_periods,required_room_type
+A01,C01,G01,T01,2,2,lab
+A02,C02,G01,T02,2,2,lecture
+A03,C03,G01,T03,2,2,lab
+A04,C01,G02,T01,2,2,lab
+A05,C04,G02,T04,2,2,lecture
+A06,C05,G02,T05,2,2,lecture
+A07,C02,G03,T02,2,2,lecture
+A08,C04,G03,T04,2,2,lecture
+A09,C06,G03,T06,2,2,lab
+A10,C03,G04,T03,2,2,lab
+A11,C05,G04,T05,2,2,lecture
+A12,C07,G04,T07,2,2,lecture

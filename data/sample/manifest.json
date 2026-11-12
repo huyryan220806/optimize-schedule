@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "source": "synthetic-hand-curated",
+  "assignments": 12,
+  "events": 24,
+  "feasibility_status": "witness_validated",
+  "witness": "../fixtures/sample_witness_schedule.csv",
+  "note": "No GA implementation or benchmark results are included in the starter."
+}

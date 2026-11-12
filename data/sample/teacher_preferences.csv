@@ -1,0 +1,15 @@
+teacher_id,day,period,preference
+T01,Tue,7,avoid
+T01,Tue,8,avoid
+T02,Wed,7,avoid
+T02,Wed,8,avoid
+T03,Thu,7,avoid
+T03,Thu,8,avoid
+T04,Fri,7,avoid
+T04,Fri,8,avoid
+T05,Mon,7,avoid
+T05,Mon,8,avoid
+T06,Tue,7,avoid
+T06,Tue,8,avoid
+T07,Wed,7,avoid
+T07,Wed,8,avoid

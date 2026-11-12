@@ -1,0 +1,12 @@
+Working directory: .publish/optimize-schedule
+Command: python -m pip wheel . --no-deps --wheel-dir ../qa/wheels
+Installing build dependencies: finished with status 'done'
+Building wheel for timetable-ga (pyproject.toml): finished with status 'done'
+Created wheel: timetable_ga-0.1.0-py3-none-any.whl
+Size: 24624 bytes
+SHA256: 84d8150981ca050aa59ff302c2864ebce410a054bd64e1ab251e4ec99fefff5a
+Successfully built timetable-ga
+
+Initial attempt with --no-build-isolation failed because the existing environment
+did not contain setuptools.build_meta. Retried with the normal isolated build;
+build requirements were installed successfully and the wheel was created.

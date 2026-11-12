@@ -1,0 +1,6 @@
+Working directory: .publish/optimize-schedule
+PYTHONPATH: curated checkout/src
+python -m ruff check src tests scripts app.py
+All checks passed!
+python -m pip check
+No broken requirements found.

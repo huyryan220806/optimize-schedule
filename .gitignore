@@ -1,0 +1,35 @@
+# Python environment/caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# Generated benchmark artifacts (do not delete raw data needed for report)
+results/*
+!results/benchmark/
+reports/generated/
+data/generated/
+
+# UI and local config
+.streamlit/secrets.toml
+/checkpoints/day3/streamlit.*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Original Day 1 copy retained after the automatic move/delete rejection.
+/GA_Timetable_3Ngay_Codex_SpecKit/
+
+# Curated GitHub checkout and local Word authoring intermediates
+/.publish/
+/reports/build_word_report.py
+/reports/report_word_content.md
+~$*.docx
+*.tmp

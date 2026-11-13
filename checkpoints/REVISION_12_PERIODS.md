@@ -46,3 +46,8 @@ cũng đạt 200 tests pass (28.28s), Ruff pass và pip check pass. Bản đăng
 các file cần thiết; commit push và xác nhận remote được lưu tại
 checkpoints/progress.json của workspace phát triển sau khi push.
 Không còn việc triển khai chức năng ngoài phạm vi đã yêu cầu.
+
+Người dùng xác nhận dùng bản tên mới
+`reports/NHAPMONTOIUUHOA_DOANMH_De4_NGUYENDINHHUY_LEQUYETTIEN.docx` làm bản cuối.
+Giữ nguyên bytes của file người dùng; kiểm tra lại 17 trang theo PDF Word được lưu
+cùng bản cuối. Bản mã nguồn và báo cáo trước đổi tên đã push ở commit `9e9c03e`.

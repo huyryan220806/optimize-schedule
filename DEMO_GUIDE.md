@@ -85,6 +85,6 @@ Không có upload hoặc tài khoản trong bản sprint. Dừng server terminal
 ## Tài liệu trình bày
 
 - [Giải thích chi tiết code GA và câu hỏi vấn đáp](docs/GA_CODE_WALKTHROUGH.md).
-- [Báo cáo Word 12 tiết đã chỉnh sửa](reports/BAO_CAO_GA_THOI_KHOA_BIEU_12_TIET.docx).
+- [Báo cáo Word 12 tiết đã chỉnh sửa](reports/NHAPMONTOIUUHOA_DOANMH_De4_NGUYENDINHHUY_LEQUYETTIEN.docx).
 - [Convergence đã lưu](results/benchmark_12periods/convergence.png).
 - [Kiểm chứng bản đăng](docs/VERIFICATION.md).

@@ -14,7 +14,7 @@ Dữ liệu mẫu **giả lập** gồm 24 buổi học, 7 giảng viên, 4 nhó
 - **[Giải thích chi tiết code GA](docs/GA_CODE_WALKTHROUGH.md)**: gene, fitness,
   tournament, crossover, mutation, elitism, budget; ví dụ và câu hỏi vấn đáp.
 - **[Kịch bản demo 5 phút](DEMO_GUIDE.md)**: thao tác giao diện và ba lệnh dự phòng.
-- **[Báo cáo Word 12 tiết](reports/BAO_CAO_GA_THOI_KHOA_BIEU_12_TIET.docx)**: cập nhật
+- **[Báo cáo Word 12 tiết](reports/NHAPMONTOIUUHOA_DOANMH_De4_NGUYENDINHHUY_LEQUYETTIEN.docx)**: cập nhật
   theo góp ý của giảng viên, giữ bìa đã sửa; có hình, bảng trọng số, code cuối chương 2 và nguồn.
 - [Quy tắc H0–H8 và trọng số](docs/02_DOMAIN_AND_CONSTRAINTS.md),
   [schema CSV](docs/03_DATASET_AND_SCHEMA.md), [kiểm chứng bản đăng](docs/VERIFICATION.md).

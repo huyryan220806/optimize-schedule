@@ -13,6 +13,11 @@ Hình 2 của Word có bước chọn lọc và lai ghép; code chuyển thành 
 chương 2. Báo cáo mới giữ nguyên bìa người thực hiện đã sửa, cập nhật bảng trọng
 số, thực nghiệm, hình, nguồn và mục lục. Bản cũ giữ cục bộ và trong lịch sử Git.
 
+Bản cuối dùng tên NHAPMONTOIUUHOA_DOANMH_De4_NGUYENDINHHUY_LEQUYETTIEN.docx
+do người thực hiện xác nhận. Nội dung file này được giữ nguyên khi đăng; thay đổi
+sau bản kiểm tra là đường dẫn GitHub ở cuối tài liệu và header/footer chương 3.
+Đã kiểm tra lại hai trang cuối; 15 trang đầu giống bản render đã kiểm tra.
+
 ## Kết quả kiểm tra
 
 | Kiểm tra | Kết quả |

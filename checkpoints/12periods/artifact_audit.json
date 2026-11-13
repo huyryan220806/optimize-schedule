@@ -58,7 +58,6 @@
   ],
   "verified_code_snippets": 9,
   "witness_used_in_solvers": false,
-  "report_sha256": "f4a3d39d955e9193a98c0975727e0b3acce1f2cd1bbcb2f7e709b1e0c64f3310",
   "report_pages": 17,
   "render_engine": "Microsoft Word PDF plus render_docx.py rasterizer",
   "visual_review": "All 17 pages reviewed; final changed pages 4 and 8 reviewed again; other 15 page PNGs byte-identical.",
@@ -70,5 +69,11 @@
     "S3 11/12 weight 1",
     "recomputed benchmark tables and figures",
     "updated TOC pages"
-  ]
+  ],
+  "generated_report_sha256": "f4a3d39d955e9193a98c0975727e0b3acce1f2cd1bbcb2f7e709b1e0c64f3310",
+  "report_sha256": "20f0c5b39829798fe4dcc59f871cbea24420eadbd0006ed00e56f2f79662145c",
+  "report": "reports/NHAPMONTOIUUHOA_DOANMH_De4_NGUYENDINHHUY_LEQUYETTIEN.docx",
+  "user_final_report_preserved": true,
+  "user_final_changes": "Project directory reference replaced with GitHub URL; chapter 3 header/footer now visible; 468 paragraphs retained.",
+  "user_final_visual_review": "Native Word PDF saved with final file: 17 pages. Pages 1–15 identical to prior reviewed render; pages 16–17 reviewed again."
 }

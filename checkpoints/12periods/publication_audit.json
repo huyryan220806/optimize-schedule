@@ -8,7 +8,7 @@
   "pytest": 200,
   "ruff": "pass",
   "pip_check": "pass",
-  "report": "reports/BAO_CAO_GA_THOI_KHOA_BIEU_12_TIET.docx",
+  "report": "reports/NHAPMONTOIUUHOA_DOANMH_De4_NGUYENDINHHUY_LEQUYETTIEN.docx",
   "excludes": [
     "environment",
     "caches",

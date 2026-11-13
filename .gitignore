@@ -13,6 +13,7 @@ build/
 # Generated benchmark artifacts (do not delete raw data needed for report)
 results/*
 !results/benchmark/
+!results/benchmark_12periods/
 reports/generated/
 data/generated/
 
@@ -31,5 +32,7 @@ Thumbs.db
 /.publish/
 /reports/build_word_report.py
 /reports/report_word_content.md
+/reports/revise_report_12periods.py
+/reports/*.pdf
 ~$*.docx
 *.tmp

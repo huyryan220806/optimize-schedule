@@ -24,7 +24,7 @@ def test_week_grid_covers_each_period_and_keeps_collisions(tiny):
     )
     problem = replace(tiny, events=tuple(replace(event, group_id="G0") for event in tiny.events))
     frame = ui.timetable_frame(problem, rows, "G0")
-    assert frame.shape == (8, 5)
+    assert frame.shape == (12, 5)
     assert "E0" in frame.loc[1, "Mon"]
     assert "E0" in frame.loc[2, "Mon"] and "E1" in frame.loc[2, "Mon"]
     assert "E1" in frame.loc[3, "Mon"]
@@ -49,7 +49,7 @@ def test_app_run_filter_and_csv_without_reevaluation(monkeypatch):
     app.button(key="optimize").click().run()
     assert not app.exception
     assert app.success[0].value == "Lịch hợp lệ"
-    assert [metric.value for metric in app.metric[:2]] == ["0", "4"]
+    assert [metric.value for metric in app.metric[:2]] == ["0", "0"]
     run = app.session_state["run"]
     original_genes = run.result.chromosome
     original_history = run.result.history

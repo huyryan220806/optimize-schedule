@@ -14,12 +14,11 @@ mở song song file [ga.py](../src/timetable_ga/ga.py) và tài liệu này.
 > cho một buổi. GA tạo nhiều lịch ngẫu nhiên, chấm theo tuple (H, S), chọn cha mẹ bằng
 > tournament, lai đồng đều, đột biến từng gene và giữ lại cá thể tốt bằng elitism.
 > H là tổng vi phạm cứng, luôn được ưu tiên trước điểm phạt mềm S. Sau tối đa 2.000 lần
-> đánh giá, chương trình trả lịch tốt nhất đã gặp. Kết quả demo seed 42 là H=0, S=4.
-> Với ba seed thực nghiệm, GA tìm được lịch hợp lệ cả ba lần, nhưng Greedy có điểm mềm
-> tốt hơn trên sample. Nhóm không kết luận GA luôn tốt hơn hoặc đã tối ưu toàn cục.
+> đánh giá, chương trình trả lịch tốt nhất đã gặp. Kết quả demo seed 42 là H=0, S=0.
+> Với ba seed thực nghiệm, GA tìm được lịch hợp lệ cả ba lần, GA có median điểm mềm thấp hơn Greedy và Random trên sample 12 tiết. Nhóm không kết luận GA luôn tốt hơn hoặc đã tối ưu toàn cục.
 
-Số demo đối chiếu [solve.json](../checkpoints/day3/solve.json); kết quả so sánh nằm trong
-[raw_runs.csv](../results/benchmark/raw_runs.csv), không lấy từ ví dụ minh họa.
+Số demo đối chiếu [solve.json](../checkpoints/12periods/solve.json); kết quả so sánh nằm trong
+[raw_runs.csv](../results/benchmark_12periods/raw_runs.csv), không lấy từ ví dụ minh họa.
 
 ## 2. Các file cần hiểu và thứ tự đọc
 
@@ -29,7 +28,7 @@ Số demo đối chiếu [solve.json](../checkpoints/day3/solve.json); kết qu�
 | 2 | [io.py](../src/timetable_ga/io.py) | Đọc 9 CSV, kiểm tra dữ liệu, mở rộng assignment thành events |
 | 3 | [candidates.py: build_candidates](../src/timetable_ga/candidates.py#L18) | Tạo danh sách placement của từng event |
 | 4 | [search.py](../src/timetable_ga/search.py) | Chromosome, decode, budget, best-so-far, history |
-| 5 | [evaluator.py: evaluate](../src/timetable_ga/evaluator.py#L82) | Chấm H0–H8 và S1/S3/S4 |
+| 5 | [evaluator.py: evaluate](../src/timetable_ga/evaluator.py#L90) | Chấm H0–H8 và S1/S3/S4 |
 | 6 | [ga.py](../src/timetable_ga/ga.py) | Các toán tử và vòng lặp tiến hóa |
 | 7 | [baselines.py](../src/timetable_ga/baselines.py) | Hai đối chứng dùng chung bộ chấm |
 | 8 | [ui.py](../src/timetable_ga/ui.py) | Gọi GA và hiển thị kết quả, không tự chấm fitness |
@@ -144,7 +143,7 @@ Chi tiết định nghĩa và đơn vị đếm: [docs/02](02_DOMAIN_AND_CONSTRA
 
 ### 5.1 Luôn ưu tiên H trước S
 
-Nguồn: [evaluator.py, dòng 51–54](../src/timetable_ga/evaluator.py#L51).
+Nguồn: [evaluator.py, dòng 59–62](../src/timetable_ga/evaluator.py#L59).
 
 ~~~python
 @property
@@ -190,7 +189,7 @@ một ô bị trùng. Một event có thể vi phạm nhiều mã; H là tổng 
 | Mã | Điểm gốc | Trọng số mặc định |
 |---|---|---:|
 | S1 | Số tiết event chiếm thuộc preference avoid của giảng viên | 3 |
-| S3 | Số tiết event chiếm ở tiết 7 hoặc 8 | 1 |
+| S3 | Số tiết event chiếm ở tiết 11 hoặc 12 | 1 |
 | S4 | Tổng max(0, số buổi − số ngày khác nhau) theo assignment | 5 |
 
 S = 3×S1_raw + 1×S3_raw + 5×S4_raw.
@@ -533,15 +532,15 @@ Kết quả đã lưu cho seeds 11,22,33, mỗi run 2.000 evaluations:
 
 | Phương pháp | Số run H=0 | Median S trên runs H=0 | Diễn giải |
 |---|---:|---:|---|
-| GA | 3/3 | 3 | Tìm được lịch hợp lệ trong cả ba seed |
-| Greedy | 3/3 | 0 | Điểm mềm tốt hơn GA ở sample này |
-| Random Search | 2/3 | 19.5 | Seed 11 còn H=2 |
+| GA | 3/3 | 0 | Tìm được lịch hợp lệ trong cả ba seed |
+| Greedy | 3/3 | 8 | Điểm mềm cao hơn GA ở sample này |
+| Random Search | 3/3 | 11 | Cả ba run đều khả thi |
 
-Nguồn: [summary.csv](../results/benchmark/summary.csv) và
-[raw_runs.csv](../results/benchmark/raw_runs.csv). Không lấy trung bình S của cả
+Nguồn: [summary.csv](../results/benchmark_12periods/summary.csv) và
+[raw_runs.csv](../results/benchmark_12periods/raw_runs.csv). Không lấy trung bình S của cả
 lịch chưa hợp lệ để so chất lượng lịch sử dụng được. Chỉ có n=3, chưa kiểm định
-thống kê, chưa khảo sát khả năng mở rộng. Việc Greedy phù hợp sample nhỏ là một
-diễn giải có thể, chưa phải kết luận nguyên nhân đã được kiểm chứng.
+thống kê, chưa khảo sát khả năng mở rộng. Số đo 12 tiết ngày 13/11/2026 thay cho bộ 8 tiết trong phần trình bày hiện tại;
+miền lựa chọn và S3 khác nhau nên không trộn hai bộ kết quả.
 
 ## 15. Kiểm thử nào bảo vệ các điểm quan trọng?
 
@@ -594,7 +593,7 @@ sample 24 events, chưa có benchmark medium/large.
 | 4–5 phút | ga.mutate | Giải thích phép dịch để loại gene cũ bằng bảng size=5 |
 | 5–6 phút | elitist_survivors và optimize | Chấm 40 con, giữ 2 elites + 38 con, không chấm lại elites |
 | 6–7 phút | EvaluationBudget.score | Budget bao gồm khởi tạo, global best, history mỗi evaluation |
-| 7–8 phút | UI và summary.csv | Seed42 H=0/S=4; Greedy tốt hơn GA trên sample, giới hạn n=3 |
+| 7–8 phút | UI và summary.csv | Seed42 H=0/S=0; GA median S=0, Greedy S=8, Random S=11; giới hạn n=3 |
 
 Nếu nhóm chia hai người: người thứ nhất phụ trách dữ liệu, chromosome và evaluator;
 người thứ hai phụ trách operators, vòng lặp, budget và thực nghiệm. Cả hai cần hiểu
@@ -636,9 +635,9 @@ S vẫn có thể giảm. GA là tìm kiếm hữu hạn, chưa có chứng minh
 **10. Sao không dừng ở H=0?** Vì mục tiêu thứ hai là giảm S. Code tiếp tục cho tới
 hết budget hoặc giới hạn thế hệ, không có dừng sớm tại lịch hợp lệ đầu tiên.
 
-**11. Tại sao GA thua Greedy ở kết quả?** Đó là kết quả thật của sample. Greedy thử
-nhiều candidate theo từng event nên có thể phù hợp bài toán nhỏ này; chưa có đủ
-instances/seeds để kết luận nguyên nhân hoặc xếp hạng tổng quát.
+**11. GA có luôn thắng Greedy không?** Không. Bộ 12 tiết hiện tại cho GA median S=0,
+Greedy=8 và Random=11. Bộ 8 tiết lịch sử từng cho Greedy tốt hơn. Thay đổi miền lịch
+và S3 làm bài toán khác đi; ba seed chưa đủ kết luận tổng quát.
 
 **12. Dùng 40 cá thể và 50 thế hệ có được tuning không?** Đây là cấu hình đã chọn
 cho sprint. Chưa tìm siêu tham số tối ưu, không tune lại theo ba benchmark seeds rồi
@@ -675,9 +674,9 @@ artifacts đã chạy; ví dụ tự đặt không được trộn vào benchmar
    [schema](03_DATASET_AND_SCHEMA.md), [spec](../specs/001-timetable-mvp/spec.md),
    [GA](../src/timetable_ga/ga.py), [budget](../src/timetable_ga/search.py),
    [evaluator](../src/timetable_ga/evaluator.py), [tests](../tests/test_solvers.py).
-5. Thực nghiệm ngày 09/11/2026: [raw runs](../results/benchmark/raw_runs.csv),
-   [summary](../results/benchmark/summary.csv), [metadata](../results/benchmark/metadata.json)
-   và history/metrics/schedule của từng run. Chứng cứ UI/CLI: [day3](../checkpoints/day3/).
+5. Thực nghiệm 12 tiết ngày 13/11/2026: [raw runs](../results/benchmark_12periods/raw_runs.csv),
+   [summary](../results/benchmark_12periods/summary.csv), [metadata](../results/benchmark_12periods/metadata.json)
+   và history/metrics/schedule của từng run. Chứng cứ mới: [12periods](../checkpoints/12periods/).
 
-Nguồn trực tuyến được đối chiếu ngày 12/11/2026. Mã nguồn solver không thay đổi trong
-lần chuẩn bị tài liệu này; các số dòng trong liên kết ứng với bản đăng hiện tại.
+Nguồn trực tuyến được đối chiếu ngày 12/11/2026. Bản 13/11 cập nhật miền lịch,
+loader, evaluator và UI; các toán tử GA giữ nguyên. Số dòng ứng với source hiện tại.

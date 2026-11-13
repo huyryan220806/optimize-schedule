@@ -1,0 +1,154 @@
+{
+  "algorithm": "ga",
+  "seed": 7,
+  "dataset_fingerprint": "d8bc0b27907ba82f9f8fe79c53314a79eb3dd5ac72239bfa9d70679433bed6e2",
+  "max_evals": 2000,
+  "actual_evals": 4,
+  "runtime_sec": 0.001638499990804121,
+  "stop_reason": "generations",
+  "config": {
+    "seed": 7,
+    "max_evals": 2000,
+    "population_size": 4,
+    "generations": 0,
+    "crossover_rate": 0.85,
+    "mutation_rate": 0.1,
+    "elite_count": 2,
+    "tournament_size": 3,
+    "repair_enabled": false,
+    "active_soft_constraints": [
+      "S1",
+      "S3",
+      "S4"
+    ],
+    "soft_weights": {
+      "S1": 3,
+      "S3": 1,
+      "S4": 5
+    }
+  },
+  "chromosome": [
+    40,
+    59,
+    116,
+    92,
+    38,
+    31,
+    23,
+    31,
+    20,
+    76,
+    126,
+    87,
+    114,
+    73,
+    18,
+    30,
+    65,
+    53,
+    21,
+    43,
+    38,
+    125,
+    107,
+    10
+  ],
+  "soft_feasible_only": null,
+  "hard_count": 6,
+  "soft_penalty": 17,
+  "fitness": [
+    6,
+    17
+  ],
+  "status": "best_found_infeasible",
+  "status_label": "Lịch chưa hợp lệ",
+  "hard_breakdown": {
+    "H0": 0,
+    "H1": 4,
+    "H2": 1,
+    "H3": 1,
+    "H4": 0,
+    "H5": 0,
+    "H6": 0,
+    "H7": 0,
+    "H8": 0
+  },
+  "soft_raw": {
+    "S1": 2,
+    "S3": 6,
+    "S4": 1
+  },
+  "soft_weighted": {
+    "S1": 6,
+    "S3": 6,
+    "S4": 5
+  },
+  "violations": [
+    {
+      "code": "H1",
+      "event_ids": [
+        "A05-S01",
+        "A08-S01"
+      ],
+      "reason": "overlap",
+      "day": "Mon",
+      "period": 9,
+      "resource_id": "T04"
+    },
+    {
+      "code": "H1",
+      "event_ids": [
+        "A05-S01",
+        "A08-S01"
+      ],
+      "reason": "overlap",
+      "day": "Mon",
+      "period": 10,
+      "resource_id": "T04"
+    },
+    {
+      "code": "H1",
+      "event_ids": [
+        "A06-S01",
+        "A11-S02"
+      ],
+      "reason": "overlap",
+      "day": "Fri",
+      "period": 11,
+      "resource_id": "T05"
+    },
+    {
+      "code": "H1",
+      "event_ids": [
+        "A06-S01",
+        "A11-S02"
+      ],
+      "reason": "overlap",
+      "day": "Fri",
+      "period": 12,
+      "resource_id": "T05"
+    },
+    {
+      "code": "H2",
+      "event_ids": [
+        "A01-S02",
+        "A02-S02"
+      ],
+      "reason": "overlap",
+      "day": "Thu",
+      "period": 7,
+      "resource_id": "G01"
+    },
+    {
+      "code": "H3",
+      "event_ids": [
+        "A05-S02",
+        "A07-S02"
+      ],
+      "reason": "overlap",
+      "day": "Wed",
+      "period": 10,
+      "resource_id": "R103"
+    }
+  ]
+}

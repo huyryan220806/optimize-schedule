@@ -8,7 +8,7 @@ import pandas as pd
 import streamlit as st
 
 from timetable_ga.candidates import UnschedulableEvent
-from timetable_ga.domain import DAYS, ProblemInstance, ScheduledEvent
+from timetable_ga.domain import DAYS, PERIODS, ProblemInstance, ScheduledEvent
 from timetable_ga.ga import GAConfig, optimize
 from timetable_ga.io import DataValidationError, load_problem
 from timetable_ga.outputs import schedule_csv
@@ -32,7 +32,7 @@ def timetable_frame(
     """Map every occupied period to a cell; retain all entries in overlapping cells."""
     events = {event.event_id: event for event in problem.events}
     courses = {course.course_id: course.name for course in problem.courses}
-    cells = {(period, day): [] for period in range(1, 9) for day in DAYS}
+    cells = {(period, day): [] for period in PERIODS for day in DAYS}
     for row in schedule:
         event = events[row.event_id]
         placement = row.placement
@@ -46,8 +46,8 @@ def timetable_frame(
             if (period, placement.day) in cells:
                 cells[period, placement.day].append(text)
     return pd.DataFrame(
-        {day: ["\n\n".join(cells[period, day]) for period in range(1, 9)] for day in DAYS},
-        index=pd.Index(range(1, 9), name="Tiết"),
+        {day: ["\n\n".join(cells[period, day]) for period in PERIODS] for day in DAYS},
+        index=pd.Index(PERIODS, name="Tiết"),
     )
 
 
@@ -56,11 +56,11 @@ def timetable_html(
     schedule: tuple[ScheduledEvent, ...],
     group_id: str,
 ) -> str:
-    """Accessible week table with escaped CSV labels and a visible lunch break."""
+    """Accessible week table with escaped labels and breaks between three blocks."""
     frame = timetable_frame(problem, schedule, group_id)
     slots = {(slot.day, slot.period): slot for slot in problem.time_slots}
     rows = []
-    for period in range(1, 9):
+    for period in PERIODS:
         time_slot = next((slots[day, period] for day in DAYS if (day, period) in slots), None)
         time_label = f"{time_slot.start}–{time_slot.end}" if time_slot and time_slot.start else ""
         cells = [f'<th scope="row">Tiết {period}<small>{escape(time_label)}</small></th>']
@@ -81,6 +81,11 @@ def timetable_html(
         if period == 4:
             rows.append(
                 '<tr class="lunch"><td colspan="6">Nghỉ trưa · Ca chiều bắt đầu từ tiết 5</td></tr>'
+            )
+        elif period == 8:
+            rows.append(
+                '<tr class="lunch"><td colspan="6">'
+                'Nghỉ chuyển ca · Ca tối bắt đầu từ tiết 9</td></tr>'
             )
     headers = '<th scope="col">Thời gian</th>' + "".join(
         f'<th scope="col">{DAY_LABELS[day]}</th>' for day in DAYS
@@ -267,6 +272,7 @@ def render_app() -> None:
         else:
             st.info("Chưa có lịch H=0 trong lần chạy này.")
     st.caption(
-        "Đang xét S1: preference giảng viên, S3: tiết muộn, S4: dồn buổi cùng ngày. "
+        "12 tiết/ngày: sáng 1–4, chiều 5–8, tối 9–12. "
+        "Đang xét S1: preference giảng viên, S3: tiết muộn 11–12, S4: dồn buổi cùng ngày. "
         "H=0 không phải tuyên bố tối ưu toàn cục."
     )

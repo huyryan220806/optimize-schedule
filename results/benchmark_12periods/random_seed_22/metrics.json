@@ -1,0 +1,80 @@
+{
+  "algorithm": "random",
+  "seed": 22,
+  "dataset_fingerprint": "d8bc0b27907ba82f9f8fe79c53314a79eb3dd5ac72239bfa9d70679433bed6e2",
+  "max_evals": 2000,
+  "actual_evals": 2000,
+  "runtime_sec": 0.8455395999772009,
+  "stop_reason": "max_evals",
+  "config": {
+    "seed": 22,
+    "max_evals": 2000,
+    "active_soft_constraints": [
+      "S1",
+      "S3",
+      "S4"
+    ],
+    "soft_weights": {
+      "S1": 3,
+      "S3": 1,
+      "S4": 5
+    }
+  },
+  "chromosome": [
+    73,
+    60,
+    11,
+    81,
+    51,
+    30,
+    68,
+    38,
+    51,
+    98,
+    23,
+    38,
+    30,
+    117,
+    104,
+    68,
+    62,
+    5,
+    23,
+    57,
+    103,
+    10,
+    120,
+    96
+  ],
+  "soft_feasible_only": 8,
+  "hard_count": 0,
+  "soft_penalty": 8,
+  "fitness": [
+    0,
+    8
+  ],
+  "status": "feasible",
+  "status_label": "Lịch hợp lệ",
+  "hard_breakdown": {
+    "H0": 0,
+    "H1": 0,
+    "H2": 0,
+    "H3": 0,
+    "H4": 0,
+    "H5": 0,
+    "H6": 0,
+    "H7": 0,
+    "H8": 0
+  },
+  "soft_raw": {
+    "S1": 0,
+    "S3": 8,
+    "S4": 0
+  },
+  "soft_weighted": {
+    "S1": 0,
+    "S3": 8,
+    "S4": 0
+  },
+  "violations": []
+}

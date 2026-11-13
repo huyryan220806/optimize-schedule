@@ -10,10 +10,10 @@ from timetable_ga.evaluator import evaluate
 @pytest.mark.parametrize(
     ("duration", "starts"),
     [
-        (1, {1, 2, 3, 4, 5, 6, 7, 8}),
-        (2, {1, 2, 3, 5, 6, 7}),
-        (3, {1, 2, 5, 6}),
-        (4, {1, 5}),
+        (1, set(range(1, 13))),
+        (2, {1, 2, 3, 5, 6, 7, 9, 10, 11}),
+        (3, {1, 2, 5, 6, 9, 10}),
+        (4, {1, 5, 9}),
     ],
 )
 def test_duration_one_to_four_same_block(tiny, duration, starts):

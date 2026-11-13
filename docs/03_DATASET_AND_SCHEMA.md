@@ -26,7 +26,7 @@ data/sample/
 | `rooms.csv` | `room_id,name,capacity,room_type` | capacity >0; room_type `lecture|lab` |
 | `courses.csv` | `course_id,name` | ID duy nhất |
 | `assignments.csv` | `assignment_id,course_id,group_id,teacher_id,sessions_per_week,duration_periods,required_room_type` | khóa ngoại tồn tại; sessions>=1, duration 1..4 |
-| `time_slots.csv` | `day,period,block,start,end` | day `Mon..Fri`, period 1..8, block `morning` cho 1..4, `afternoon` cho 5..8; mỗi tuple `(day,period)` duy nhất |
+| `time_slots.csv` | `day,period,block,start,end` | day `Mon..Fri`, period 1..12, block `morning` cho 1..4, `afternoon` cho 5..8, `evening` cho 9..12; mỗi tuple `(day,period)` duy nhất |
 | `teacher_unavailability.csv` | `teacher_id,day,period` | không được phép dạy tại period; file có thể rỗng có header |
 | `room_unavailability.csv` | `room_id,day,period` | phòng đóng tại period; file có thể rỗng có header |
 | `teacher_preferences.csv` | `teacher_id,day,period,preference` | `avoid` là phạt mềm, không phải unavailable; file có thể rỗng |
@@ -38,8 +38,9 @@ Số sinh viên của event lấy từ `student_groups.size`; nếu một môn c
 ## Bộ dữ liệu mẫu
 
 - 7 teachers, 4 groups, 6 rooms, 7 courses, 12 assignments × 2 sessions = **24 events**.
-- 5 ngày × 8 period = 40 period/tuần mỗi phòng.
+- 5 ngày × 12 period = 60 period/tuần mỗi phòng.
 - Mỗi event dài 2 period.
+- Ca tối minh họa: tiết 9 18:00–18:50, tiết 10 18:55–19:45, tiết 11 19:55–20:45, tiết 12 20:50–21:40. Đây là giờ giả lập, không phải lịch chuông chính thức của trường.
 - Có room lecture/lab, capacity đủ/không đủ tùy nhóm và room; có unavailable giờ GV/phòng và soft preference.
 - Dữ liệu **giả lập**; seed CSV chỉ để demo và test loader/solver. Không có kết quả tối ưu đã đo trước.
 

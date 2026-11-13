@@ -1,0 +1,10 @@
+algorithm  seed  actual_evals  hard_count  soft_feasible_only  runtime_sec
+   random    11          2000           0                  14     0.846695
+   random    22          2000           0                   8     0.845540
+   random    33          2000           0                  11     0.809445
+   greedy    11          2000           0                   8     0.741553
+   greedy    22          2000           0                   5     0.825870
+   greedy    33          2000           0                  11     0.741775
+       ga    11          2000           0                   0     0.859565
+       ga    22          2000           0                   0     0.881322
+       ga    33          2000           0                   0     0.871020

@@ -10,7 +10,10 @@ from pathlib import Path
 
 from timetable_ga.candidates import build_candidates
 from timetable_ga.domain import (
+    BLOCK_NAMES,
     DAYS,
+    PERIODS,
+    PERIODS_PER_BLOCK,
     ROOM_TYPES,
     Assignment,
     Course,
@@ -114,7 +117,13 @@ def _normalize(name: str, rows: list[dict[str, str]]) -> list[Row]:
         context = f"{name}.csv: row {number}"
         item: Row = dict(row)
         for key in INTEGER_COLUMNS.intersection(row):
-            maximum = 4 if key == "duration_periods" else 8 if key == "period" else None
+            maximum = (
+                PERIODS_PER_BLOCK
+                if key == "duration_periods"
+                else PERIODS[-1]
+                if key == "period"
+                else None
+            )
             item[key] = _integer(row[key], f"{context}: {key}", 1, maximum)
         if "day" in row and row["day"] not in DAYS:
             raise DataValidationError(f"{context}: unknown day {row['day']!r}")
@@ -124,7 +133,7 @@ def _normalize(name: str, rows: list[dict[str, str]]) -> list[Row]:
         if "preference" in row and row["preference"] != "avoid":
             raise DataValidationError(f"{context}: preference must be 'avoid'")
         if name == "time_slots":
-            expected = "morning" if item["period"] <= 4 else "afternoon"
+            expected = BLOCK_NAMES[(item["period"] - 1) // PERIODS_PER_BLOCK]
             if row["block"] != expected:
                 raise DataValidationError(f"{context}: block must be {expected}")
             for key in ("start", "end"):

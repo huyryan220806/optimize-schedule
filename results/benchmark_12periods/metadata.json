@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-11-13T08:59:13.534467+07:00",
+  "timezone": "Asia/Saigon",
+  "dataset": "D:\\VLU\\261\\Optimizer\\Project\\data\\sample",
+  "dataset_id": "sample",
+  "events": 24,
+  "dataset_fingerprint": "d8bc0b27907ba82f9f8fe79c53314a79eb3dd5ac72239bfa9d70679433bed6e2",
+  "source_fingerprint": "eb9b4d9ca22b24b69332acca8362314bbd3b6c1af8106cdf68a24b7130bbf43a",
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "max_evals": 2000,
+  "runs": 9,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "timetable-ga": "0.1.0",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2"
+  },
+  "witness_used": false,
+  "repair_enabled": false,
+  "protocol": "Full complete-schedule evaluations; cached elites/current greedy fitness are reused, not re-counted. No incremental scorer. Common cap; actual calls reported.",
+  "greedy": "Multi-start hardest-event-first coordinate sweep over full random completions; one sweep per restart.",
+  "ga": "Random initial population; up to population_size offspring evaluated per generation; parent elites plus best children survive.",
+  "limitations": "Synthetic sample, n=3; illustrative comparison, no statistical or global-optimality claim."
+}

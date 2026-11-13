@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-13",
+  "files_checked_excluding_this_audit": 133,
+  "checked_relative_links": 72,
+  "broken_links": [],
+  "selected_files_identical_to_workspace": true,
+  "secret_pattern_matches": [],
+  "pytest": 200,
+  "ruff": "pass",
+  "pip_check": "pass",
+  "report": "reports/BAO_CAO_GA_THOI_KHOA_BIEU_12_TIET.docx",
+  "excludes": [
+    "environment",
+    "caches",
+    "Spec Kit tools",
+    "old project copy",
+    "Word builders",
+    "render QA"
+  ],
+  "old_report_preserved_in_git_history": true
+}

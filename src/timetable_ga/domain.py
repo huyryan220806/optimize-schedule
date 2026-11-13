@@ -5,6 +5,10 @@ from dataclasses import dataclass, field
 from types import MappingProxyType
 
 DAYS = ("Mon", "Tue", "Wed", "Thu", "Fri")
+PERIODS_PER_BLOCK = 4
+BLOCK_NAMES = ("morning", "afternoon", "evening")
+PERIODS = tuple(range(1, PERIODS_PER_BLOCK * len(BLOCK_NAMES) + 1))
+LATE_PERIODS = frozenset({11, 12})
 ROOM_TYPES = frozenset({"lecture", "lab"})
 
 

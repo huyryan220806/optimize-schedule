@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-13",
+  "periods": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "blocks": {
+    "morning": [
+      1,
+      4
+    ],
+    "afternoon": [
+      5,
+      8
+    ],
+    "evening": [
+      9,
+      12
+    ]
+  },
+  "late_periods": [
+    11,
+    12
+  ],
+  "S3_weight": 1,
+  "replayed_runs": [
+    "ga_seed_11",
+    "ga_seed_22",
+    "ga_seed_33",
+    "greedy_seed_11",
+    "greedy_seed_22",
+    "greedy_seed_33",
+    "random_seed_11",
+    "random_seed_22",
+    "random_seed_33"
+  ],
+  "same_chromosome_fitness_config_schedule_history": true,
+  "runtime_excluded": true,
+  "dataset_fingerprint": "d8bc0b27907ba82f9f8fe79c53314a79eb3dd5ac72239bfa9d70679433bed6e2",
+  "source_fingerprint": "eb9b4d9ca22b24b69332acca8362314bbd3b6c1af8106cdf68a24b7130bbf43a",
+  "demo_fitness": [
+    0,
+    0
+  ],
+  "short_demo_fitness": [
+    6,
+    17
+  ],
+  "verified_code_snippets": 9,
+  "witness_used_in_solvers": false,
+  "report_sha256": "f4a3d39d955e9193a98c0975727e0b3acce1f2cd1bbcb2f7e709b1e0c64f3310",
+  "report_pages": 17,
+  "render_engine": "Microsoft Word PDF plus render_docx.py rasterizer",
+  "visual_review": "All 17 pages reviewed; final changed pages 4 and 8 reviewed again; other 15 page PNGs byte-identical.",
+  "cover_preserved": true,
+  "code_section": "2.6 at end of chapter 2",
+  "report_changes": [
+    "Figure 2 selection and crossover",
+    "12 periods and three blocks",
+    "S3 11/12 weight 1",
+    "recomputed benchmark tables and figures",
+    "updated TOC pages"
+  ]
+}

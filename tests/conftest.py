@@ -69,9 +69,9 @@ def tiny():
             Event(f"E{i}", f"A{i}", "C", f"G{i}", f"T{i}", 30, 2, "lecture") for i in range(3)
         ),
         time_slots=tuple(
-            TimeSlot(day, period, "morning" if period <= 4 else "afternoon", "", "")
+            TimeSlot(day, period, ("morning", "afternoon", "evening")[(period - 1) // 4], "", "")
             for day in DAYS
-            for period in range(1, 9)
+            for period in range(1, 13)
         ),
         teacher_unavailability=frozenset(),
         room_unavailability=frozenset(),

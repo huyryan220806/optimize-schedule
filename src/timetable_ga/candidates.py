@@ -2,7 +2,7 @@
 
 from dataclasses import replace
 
-from timetable_ga.domain import DAYS, Placement, ProblemInstance
+from timetable_ga.domain import DAYS, PERIODS, Placement, ProblemInstance
 
 
 class UnschedulableEvent(ValueError):
@@ -22,7 +22,7 @@ def build_candidates(problem: ProblemInstance) -> ProblemInstance:
     for event in problem.events:
         placements = []
         for day in DAYS:
-            for start in range(1, 9):
+            for start in PERIODS:
                 periods = tuple(range(start, start + event.duration_periods))
                 if not 1 <= event.duration_periods <= 4:
                     continue

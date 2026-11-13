@@ -16,10 +16,10 @@ def row(event_id, day="Mon", start=1, room="R1"):
 def test_sample_witness(sample):
     schedule = load_schedule(ROOT / "data/fixtures/sample_witness_schedule.csv", sample)
     result = evaluate(sample, schedule)
-    # A07-S02: teacher T02 on Wed period 7 contributes S1=1 and S3=1.
-    assert result.fitness == (0, 4)
+    # A07-S02: teacher T02 on Wed period 7 contributes S1=1; periods 7/8 are no longer late.
+    assert result.fitness == (0, 3)
     assert result.hard_breakdown == dict.fromkeys(HARD_CODES, 0)
-    assert result.soft_raw == {"S1": 1, "S3": 1, "S4": 0}
+    assert result.soft_raw == {"S1": 1, "S3": 0, "S4": 0}
     assert result.violations == ()
     assert result.status == "feasible"
 
@@ -117,7 +117,7 @@ def test_unavailable_each_occupied_period(tiny, periods):
 
 
 @pytest.mark.parametrize(
-    ("day", "start"), [("Mon", 4), ("Fri", 8), ("Sat", 1), ("Mon", 0), ("Mon", 9)]
+    ("day", "start"), [("Mon", 4), ("Fri", 8), ("Sat", 1), ("Mon", 0), ("Mon", 12), ("Mon", 13)]
 )
 def test_h8_cross_block_or_week(tiny, day, start):
     result = evaluate(replace(tiny, events=tiny.events[:1]), [row("E0", day, start)])
@@ -136,8 +136,8 @@ def test_h8_missing_second_slot(tiny):
 
 def test_soft_exact_weights_and_avoid_is_not_unavailable(tiny):
     events = (tiny.events[0], replace(tiny.events[1], assignment_id="A0"))
-    problem = replace(tiny, events=events, teacher_preferences=frozenset({("T0", "Mon", 8)}))
-    schedule = [row("E0", start=7), row("E1", start=1)]
+    problem = replace(tiny, events=events, teacher_preferences=frozenset({("T0", "Mon", 12)}))
+    schedule = [row("E0", start=11), row("E1", start=1)]
     result = evaluate(problem, schedule)
     assert result.hard_count == 0
     assert result.soft_raw == {"S1": 1, "S3": 2, "S4": 1}

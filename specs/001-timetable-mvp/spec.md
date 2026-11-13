@@ -4,6 +4,12 @@ Nguồn yêu cầu: `docs/00_3_DAY_SCOPE.md`, schema và cách đếm tại `doc
 
 ## User stories và acceptance
 
+Cập nhật theo phản hồi giảng viên ngày 13/11/2026: lịch 12 tiết/ngày, ba ca
+morning 1–4, afternoon 5–8, evening 9–12; S3 chỉ phạt occupied periods 11–12,
+trọng số 1. Giữ duration 1–4 và cấm vượt mọi ranh giới ca hoặc vượt tiết 12.
+Áp dụng đồng bộ loader, candidate, evaluator, UI, sample, benchmark và báo cáo.
+Hình 2 phải hiển thị riêng bước chọn lọc và lai ghép; code nằm cuối Chương 2.
+
 1. D1: người dùng kiểm tra 9 CSV và biết chính xác file/dòng/cột lỗi. Sample nở
    thành 24 events, mỗi event có local candidate domain. Không có candidate thì
    trả lỗi `UnschedulableEvent`. Fingerprint ổn định với thứ tự dòng CSV.

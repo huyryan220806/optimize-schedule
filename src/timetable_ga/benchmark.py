@@ -186,7 +186,7 @@ def main() -> int:
     parser.add_argument("--data", default="data/sample")
     parser.add_argument("--seeds", type=int, nargs=3, default=[11, 22, 33])
     parser.add_argument("--max-evals", type=int, default=2000)
-    parser.add_argument("--out", default="results/benchmark")
+    parser.add_argument("--out", default="results/benchmark_12periods")
     args = parser.parse_args()
     try:
         raw = run_benchmark(args.data, args.out, tuple(args.seeds), args.max_evals)

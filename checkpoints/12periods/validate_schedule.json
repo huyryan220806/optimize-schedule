@@ -1,0 +1,64 @@
+{
+  "status": "schedule_valid",
+  "events": 24,
+  "dataset_fingerprint": "d8bc0b27907ba82f9f8fe79c53314a79eb3dd5ac72239bfa9d70679433bed6e2",
+  "candidate_counts": {
+    "A01-S01": 82,
+    "A01-S02": 82,
+    "A02-S01": 134,
+    "A02-S02": 134,
+    "A03-S01": 82,
+    "A03-S02": 82,
+    "A04-S01": 82,
+    "A04-S02": 82,
+    "A05-S01": 134,
+    "A05-S02": 134,
+    "A06-S01": 128,
+    "A06-S02": 128,
+    "A07-S01": 134,
+    "A07-S02": 134,
+    "A08-S01": 134,
+    "A08-S02": 134,
+    "A09-S01": 86,
+    "A09-S02": 86,
+    "A10-S01": 82,
+    "A10-S02": 82,
+    "A11-S01": 128,
+    "A11-S02": 128,
+    "A12-S01": 128,
+    "A12-S02": 128
+  },
+  "global_feasibility": "witness_validated",
+  "evaluation": {
+    "hard_count": 0,
+    "soft_penalty": 0,
+    "fitness": [
+      0,
+      0
+    ],
+    "status": "feasible",
+    "status_label": "Lịch hợp lệ",
+    "hard_breakdown": {
+      "H0": 0,
+      "H1": 0,
+      "H2": 0,
+      "H3": 0,
+      "H4": 0,
+      "H5": 0,
+      "H6": 0,
+      "H7": 0,
+      "H8": 0
+    },
+    "soft_raw": {
+      "S1": 0,
+      "S3": 0,
+      "S4": 0
+    },
+    "soft_weighted": {
+      "S1": 0,
+      "S3": 0,
+      "S4": 0
+    },
+    "violations": []
+  }
+}

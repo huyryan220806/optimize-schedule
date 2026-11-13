@@ -7,7 +7,15 @@ from dataclasses import asdict, dataclass, field
 from itertools import combinations
 from types import MappingProxyType
 
-from timetable_ga.domain import DAYS, Placement, ProblemInstance, ScheduledEvent
+from timetable_ga.domain import (
+    DAYS,
+    LATE_PERIODS,
+    PERIODS,
+    PERIODS_PER_BLOCK,
+    Placement,
+    ProblemInstance,
+    ScheduledEvent,
+)
 
 HARD_CODES = tuple(f"H{index}" for index in range(9))
 SOFT_CODES = ("S1", "S3", "S4")
@@ -135,8 +143,9 @@ def evaluate(
             or day not in DAYS
             or any((day, period) not in slots for period in periods)
             or len({slots[day, period].block for period in periods if (day, period) in slots}) != 1
-            or not (1 <= start <= start + event.duration_periods - 1 <= 8)
-            or (start <= 4 < start + event.duration_periods - 1)
+            or not (1 <= start <= start + event.duration_periods - 1 <= PERIODS[-1])
+            or (start - 1) // PERIODS_PER_BLOCK
+            != (start + event.duration_periods - 2) // PERIODS_PER_BLOCK
         ):
             add("H8", (event.event_id,), "outside-single-block")
         if room is not None:
@@ -160,7 +169,7 @@ def evaluate(
                 add("H7", (event.event_id,), "room-unavailable", day, period, room_id)
             if (event.teacher_id, day, period) in problem.teacher_preferences:
                 avoid_periods.add((event.event_id, day, period))
-            if period in (7, 8):
+            if period in LATE_PERIODS:
                 late_periods.add((event.event_id, day, period))
 
     for code, resources in occupancy.items():

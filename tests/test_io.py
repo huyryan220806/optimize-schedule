@@ -14,7 +14,7 @@ def test_sample_schema_and_event_expansion(sample):
     assert len(sample.courses) == 7
     assert len(sample.assignments) == 12
     assert len(sample.events) == 24
-    assert len(sample.time_slots) == 40
+    assert len(sample.time_slots) == 60
     assert sample.events[0].event_id == "A01-S01"
     assert sample.events[1].event_id == "A01-S02"
     assert {event.duration_periods for event in sample.events} == {2}
@@ -60,7 +60,7 @@ def test_duplicate_key_rejected(data_dir, edit_csv, table):
         ("teacher_preferences", "teacher_id", "T404", "unknown teacher_id"),
         ("teacher_preferences", "preference", "prefer", "must be 'avoid'"),
         ("time_slots", "day", "Sat", "unknown day"),
-        ("time_slots", "period", "9", "outside"),
+        ("time_slots", "period", "13", "outside"),
         ("time_slots", "period", "0", "outside"),
         ("time_slots", "block", "afternoon", "block must be morning"),
         ("time_slots", "start", "25:00", "invalid start time"),

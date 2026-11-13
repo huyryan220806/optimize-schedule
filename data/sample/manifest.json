@@ -1,9 +1,19 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "source": "synthetic-hand-curated",
   "assignments": 12,
   "events": 24,
   "feasibility_status": "witness_validated",
   "witness": "../fixtures/sample_witness_schedule.csv",
-  "note": "No GA implementation or benchmark results are included in the starter."
+  "note": "Synthetic sample; 12 periods in three blocks of four. Evening times are illustrative, not official school hours. Witness is only for evaluator tests.",
+  "periods_per_day": 12,
+  "blocks": [
+    "morning",
+    "afternoon",
+    "evening"
+  ],
+  "late_periods": [
+    11,
+    12
+  ]
 }

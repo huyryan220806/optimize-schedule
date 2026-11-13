@@ -7,6 +7,10 @@ Mon,5,afternoon,13:00,13:50
 Mon,6,afternoon,13:55,14:45
 Mon,7,afternoon,14:55,15:45
 Mon,8,afternoon,15:50,16:40
+Mon,9,evening,18:00,18:50
+Mon,10,evening,18:55,19:45
+Mon,11,evening,19:55,20:45
+Mon,12,evening,20:50,21:40
 Tue,1,morning,07:00,07:50
 Tue,2,morning,07:55,08:45
 Tue,3,morning,08:55,09:45
@@ -15,6 +19,10 @@ Tue,5,afternoon,13:00,13:50
 Tue,6,afternoon,13:55,14:45
 Tue,7,afternoon,14:55,15:45
 Tue,8,afternoon,15:50,16:40
+Tue,9,evening,18:00,18:50
+Tue,10,evening,18:55,19:45
+Tue,11,evening,19:55,20:45
+Tue,12,evening,20:50,21:40
 Wed,1,morning,07:00,07:50
 Wed,2,morning,07:55,08:45
 Wed,3,morning,08:55,09:45
@@ -23,6 +31,10 @@ Wed,5,afternoon,13:00,13:50
 Wed,6,afternoon,13:55,14:45
 Wed,7,afternoon,14:55,15:45
 Wed,8,afternoon,15:50,16:40
+Wed,9,evening,18:00,18:50
+Wed,10,evening,18:55,19:45
+Wed,11,evening,19:55,20:45
+Wed,12,evening,20:50,21:40
 Thu,1,morning,07:00,07:50
 Thu,2,morning,07:55,08:45
 Thu,3,morning,08:55,09:45
@@ -31,6 +43,10 @@ Thu,5,afternoon,13:00,13:50
 Thu,6,afternoon,13:55,14:45
 Thu,7,afternoon,14:55,15:45
 Thu,8,afternoon,15:50,16:40
+Thu,9,evening,18:00,18:50
+Thu,10,evening,18:55,19:45
+Thu,11,evening,19:55,20:45
+Thu,12,evening,20:50,21:40
 Fri,1,morning,07:00,07:50
 Fri,2,morning,07:55,08:45
 Fri,3,morning,08:55,09:45
@@ -39,3 +55,7 @@ Fri,5,afternoon,13:00,13:50
 Fri,6,afternoon,13:55,14:45
 Fri,7,afternoon,14:55,15:45
 Fri,8,afternoon,15:50,16:40
+Fri,9,evening,18:00,18:50
+Fri,10,evening,18:55,19:45
+Fri,11,evening,19:55,20:45
+Fri,12,evening,20:50,21:40

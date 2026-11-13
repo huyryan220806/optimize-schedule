@@ -1,68 +1,72 @@
-# Kiểm chứng bản đăng GitHub
+# Kiểm chứng bản cập nhật 12 tiết
 
-Ngày chuẩn bị: 12/11/2026. Repository đích:
+Ngày kiểm tra: 13/11/2026. Repository đích:
 [huyryan220806/optimize-schedule](https://github.com/huyryan220806/optimize-schedule).
 
-## Phạm vi bản đăng
+## Phạm vi bản cập nhật
 
-Bản đăng giữ ứng dụng Python/Streamlit, cấu hình cài đặt, tests, dữ liệu giả lập,
-fixture kiểm thử, toàn bộ kết quả benchmark chín runs, báo cáo Word đã được người
-thực hiện sửa, ảnh UI và tài liệu để chạy/trình bày/đối chiếu kết quả.
+Chương trình, dữ liệu và báo cáo dùng 12 tiết/ngày: sáng 1–4, chiều 5–8, tối 9–12.
+S3 chỉ phạt tiết 11–12, trọng số 1. Các buổi dài nhiều tiết phải nằm trọn trong
+một ca. Bộ sample có 60 time slots và 24 events; giờ học là giả lập.
 
-Môi trường ảo, cache, log server, bản sao Ngày 1, thư mục QA tạo lại, công cụ/prompt
-Spec Kit và bộ tạo Word cục bộ không nằm trong bản đăng. Báo cáo Markdown nháp được
-giữ cục bộ; bản Word là tài liệu báo cáo được bàn giao trong repository này.
+Hình 2 của Word có bước chọn lọc và lai ghép; code chuyển thành mục 2.6 cuối
+chương 2. Báo cáo mới giữ nguyên bìa người thực hiện đã sửa, cập nhật bảng trọng
+số, thực nghiệm, hình, nguồn và mục lục. Bản cũ giữ cục bộ và trong lịch sử Git.
 
 ## Kết quả kiểm tra
 
-Chạy trên checkout đã chọn lọc; PYTHONPATH trỏ vào src của checkout này để không
-vô tình kiểm thử source ở thư mục phát triển. Dependencies dùng môi trường Python
-3.12.10 hiện có; chưa kiểm tra cài toàn bộ dependencies trong một môi trường trống.
-
-| Kiểm tra ngày 12/11/2026 | Kết quả |
+| Kiểm tra | Kết quả |
 |---|---|
-| python -m pytest -q | **186 passed in 27.00s** |
-| python -m ruff check src tests scripts app.py | All checks passed |
-| python -m pip check | No broken requirements found |
-| python -m pip wheel . --no-deps | Build wheel thành công bằng isolated build dependencies |
-| CLI validate sample | 24 events; fingerprint khớp nguồn |
-| CLI solve GA seed42 mặc định | H=0, S=4, actual_evals=2000; thế hệ cuối 49 |
-| Đối chiếu demo với checkpoint Ngày 3 | Chromosome, fitness, config và breakdown khớp |
-| Đoạn source trong tài liệu GA | 9 đoạn đối chiếu trực tiếp theo file/dòng |
-| Liên kết nội bộ README/demo/tài liệu mới | Không có đường dẫn file bị thiếu |
-| Báo cáo Word | Giữ nguyên bytes và SHA-256 của bản người thực hiện sửa |
+| pytest toàn bộ | 200 tests pass |
+| Ruff | All checks passed |
+| Sample mới | 5 × 12 time slots; loader nhận ba ca |
+| Ranh giới ca | Không vượt 4→5, 8→9 hoặc 12→13; kiểm tra mọi occupied period |
+| S3 | Tiết 7–10 không bị phạt; tiết 11/12 mỗi occupied period phạt 1 |
+| Demo GA seed42 mặc định | H=0, S=0, actual_evals=2000 |
+| Demo seed7, population4, generations0 | H=6, S=17; Lịch chưa hợp lệ |
+| CSV demo | 24 events; đọc lại và chấm độc lập khớp metrics |
+| Benchmark 3 phương pháp × 3 seeds | Mỗi run 2000 evaluations; cả ba phương pháp 3/3 khả thi |
+| Median S khả thi | GA=0; Greedy=8; Random Search=11 |
+| Replay 9 runs | Chromosome, fitness, config, schedule, history khớp; không so runtime |
+| Tài liệu giải thích GA | 9 đoạn code khớp source theo file/dòng |
+| Word | 17 trang; render bằng Word và kiểm tra toàn bộ ảnh trang; mục lục khớp |
 
-Lần thử wheel với --no-build-isolation ban đầu thiếu setuptools trong môi trường
-hiện có; lệnh build chuẩn sử dụng isolation đã tự cài build dependencies theo
-pyproject.toml và thành công. Không cần sửa solver hoặc cấu hình đóng gói.
+Checkout chọn lọc cũng đạt **200 passed in 28.28s**, Ruff pass và pip check pass.
+PYTHONPATH được trỏ vào src của checkout khi chạy để không vô tình kiểm tra
+source ở workspace chính. Log: [publication pytest](../checkpoints/12periods/publication_pytest.txt)
+và [static checks](../checkpoints/12periods/publication_static.txt).
 
-Chứng cứ: [pytest](../checkpoints/release/pytest.txt),
-[static checks](../checkpoints/release/static_checks.txt),
-[build](../checkpoints/release/build.txt), [CLI](../checkpoints/release/cli.txt),
-[audit](../checkpoints/release/audit.json).
+Chứng cứ: [pytest](../checkpoints/12periods/pytest.txt),
+[Ruff](../checkpoints/12periods/ruff.txt),
+[demo](../checkpoints/12periods/solve.json),
+[CSV](../checkpoints/12periods/schedule.csv),
+[validate](../checkpoints/12periods/validate_schedule.json),
+[artifact audit](../checkpoints/12periods/artifact_audit.json).
 
-## Nguồn gốc dữ liệu và mã nguồn
+Streamlit AppTest kiểm tra lịch 12 hàng, đổi nhóm không chấm lại và CSV chứa đủ
+events. Chứng cứ thao tác trình duyệt cũ ở checkpoints/day3 thuộc phiên bản 8 tiết;
+không dùng ảnh cũ để minh họa kết quả mới. Hình 5 mới biểu diễn CSV seed42 và ghi
+rõ nguồn CSV, không được mô tả là ảnh chụp UI.
 
-Benchmark gốc ngày 09/11/2026 được giữ nguyên tại results/benchmark, gồm raw runs,
-summary, metadata, hội tụ và metrics/history/schedule của từng run. Runtime được
-giữ đúng lần đo; chạy lại để kiểm tra không được tính thành seeds mới hoặc ghi đè
-bộ số liệu dùng trong báo cáo.
+## Truy vết thực nghiệm
 
-Các mã commit c603cb1, 67fb65b, 2021a9b, f9591fb trong báo cáo và checkpoint là
-mã lịch sử phát triển **cục bộ trước lần đăng đầu tiên**. Repository GitHub bắt đầu
-bằng một snapshot đã chọn lọc để không mang theo công cụ, bản dư và lịch sử không
-cần thiết. Các commit cục bộ đó không phải liên kết có thể truy cập trong lịch sử
-GitHub; mã Python và artifacts tương ứng được giữ trong snapshot. Nguồn solver
-không bị thay đổi khi chuẩn bị tài liệu trình bày.
+Bộ số đo mới nằm ở [benchmark_12periods](../results/benchmark_12periods/metadata.json),
+ghi seed, config, fingerprint dữ liệu/mã nguồn và môi trường. Replay QA dùng thư
+mục riêng, không ghi đè runtime đã đo và không được cộng thành seeds mới.
 
-Bản Word được lấy từ file người thực hiện đã sửa, không tái sinh hoặc chỉnh sửa
-bằng script trong lần đăng này. Thông tin hash và manifest được lưu ở checkpoint
-bản đăng. Các đoạn code trong GA_CODE_WALKTHROUGH được trích tự động từ chính source.
+results/benchmark và checkpoints/day1, day2, day3, release là chứng cứ lịch sử
+8 tiết của sprint và lần đăng 12/11. Miền lựa chọn và S3 đã đổi nên không trộn
+hai bộ số liệu hoặc dùng điểm mềm cũ để đánh giá chương trình hiện tại.
+Các mã commit phát triển cục bộ trong checkpoint cũ có thể không tồn tại trong
+lịch sử GitHub vì bản đăng đầu tiên là một snapshot đã chọn lọc.
 
-## Giới hạn kiểm chứng
+## Bản đăng và giới hạn
 
-Kiểm thử Windows không thay thế kiểm tra trên mọi hệ điều hành. Sample là dữ liệu
-giả lập nhỏ, ba seeds; GA không được tuyên bố tối ưu toàn cục. Bản Word do người
-thực hiện chỉnh sửa được giữ nguyên; lần đăng này không thay đổi hay tái xác nhận
-toàn bộ bố cục của bản sửa đó. Chứng cứ browser demo ngày 11/11 nằm trong
-[browser_smoke.json](../checkpoints/day3/browser_smoke.json).
+Giữ code, cấu hình cài đặt, tests, dữ liệu giả lập, fixture kiểm thử, số đo,
+báo cáo Word và tài liệu chạy/trình bày. Không đăng môi trường ảo, cache,
+log server, bản sao project cũ, công cụ/prompt Spec Kit, bộ tạo Word và ảnh QA.
+Fixture witness chỉ dùng kiểm thử, không được đọc vào solver khi đo kết quả.
+
+Kiểm thử dùng Windows/Python 3.12.10 và môi trường dependencies hiện có; chưa
+xác minh trên mọi hệ điều hành hoặc cài sạch. Sample nhỏ giả lập, chỉ ba seeds.
+Kết quả không chứng minh GA luôn tốt hơn hoặc đạt tối ưu toàn cục.

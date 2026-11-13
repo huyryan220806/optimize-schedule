@@ -219,7 +219,7 @@ def test_greedy_selects_best_candidate_in_full_sweep(tiny):
     problem = replace(
         tiny,
         events=(event,),
-        candidates={event.event_id: (Placement("Mon", 7, "R1"), Placement("Mon", 1, "R1"))},
+        candidates={event.event_id: (Placement("Mon", 11, "R1"), Placement("Mon", 1, "R1"))},
     )
     result = greedy_search(problem, SearchConfig(seed=1, max_evals=2))
     assert result.chromosome == (1,)

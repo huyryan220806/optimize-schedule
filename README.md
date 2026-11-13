@@ -6,7 +6,7 @@ H, sau đó giảm điểm phạt mềm S. Giao diện Streamlit hiển thị l�
 chi tiết vi phạm, đường hội tụ và cho tải lịch CSV.
 
 Dữ liệu mẫu **giả lập** gồm 24 buổi học, 7 giảng viên, 4 nhóm sinh viên, 6 phòng,
-5 ngày × 8 tiết. Đây là đồ án minh họa tối ưu có ràng buộc, chưa phải hệ thống
+5 ngày × 12 tiết. Đây là đồ án minh họa tối ưu có ràng buộc, chưa phải hệ thống
 đăng ký lịch vận hành tại trường.
 
 ## Tài liệu trình bày
@@ -14,8 +14,8 @@ Dữ liệu mẫu **giả lập** gồm 24 buổi học, 7 giảng viên, 4 nhó
 - **[Giải thích chi tiết code GA](docs/GA_CODE_WALKTHROUGH.md)**: gene, fitness,
   tournament, crossover, mutation, elitism, budget; ví dụ và câu hỏi vấn đáp.
 - **[Kịch bản demo 5 phút](DEMO_GUIDE.md)**: thao tác giao diện và ba lệnh dự phòng.
-- **[Báo cáo Word](reports/BAO_CAO_GA_THOI_KHOA_BIEU_HK261.docx)**: bản người thực hiện
-  chỉnh sửa, có hình, bảng trọng số, code và nguồn tham khảo.
+- **[Báo cáo Word 12 tiết](reports/BAO_CAO_GA_THOI_KHOA_BIEU_12_TIET.docx)**: cập nhật
+  theo góp ý của giảng viên, giữ bìa đã sửa; có hình, bảng trọng số, code cuối chương 2 và nguồn.
 - [Quy tắc H0–H8 và trọng số](docs/02_DOMAIN_AND_CONSTRAINTS.md),
   [schema CSV](docs/03_DATASET_AND_SCHEMA.md), [kiểm chứng bản đăng](docs/VERIFICATION.md).
 
@@ -35,7 +35,7 @@ python -m venv .venv
 
 Mở [http://127.0.0.1:8501](http://127.0.0.1:8501), nhấn **Optimize**.
 Cấu hình mặc định seed=42, population=40, generations=50, mutation=0.10
-đã cho **H=0, S=4, 2.000 evaluations**. Thời gian chạy có thể khác giữa các máy.
+đã cho **H=0, S=0, 2.000 evaluations**. Thời gian chạy có thể khác giữa các máy.
 
 ### macOS / Linux
 
@@ -54,7 +54,7 @@ Các lệnh bên dưới dùng đường dẫn Python trên Windows; trên macOS
 
 1. Mở sidebar, chọn seed và các tham số rồi nhấn **Optimize**.
 2. Kiểm tra trạng thái: H=0 là **Lịch hợp lệ**; H>0 là **Lịch chưa hợp lệ**.
-3. Chọn nhóm sinh viên để xem lịch. Một buổi hai tiết xuất hiện ở cả hai ô tiết.
+3. Chọn nhóm sinh viên để xem lịch. Một buổi hai tiết xuất hiện ở cả hai ô tiết. Lịch có ba ca 1–4, 5–8, 9–12 và ngăn cách giữa các ca.
 4. Xem chi tiết H/S và đồ thị best-so-far theo số lần đánh giá.
 5. Tải **toàn bộ lịch CSV** của cả bốn nhóm; bộ lọc không làm thiếu dữ liệu tải xuống.
 
@@ -112,7 +112,7 @@ Candidate generator lọc ràng buộc cục bộ H4–H8; evaluator vẫn kiể
 |---|---|
 | Fitness | So sánh tuple (hard_count, soft_penalty), nhỏ hơn tốt hơn |
 | S1 | Tiết thuộc preference avoid của giảng viên; trọng số **3** |
-| S3 | Tiết muộn 7 hoặc 8; trọng số **1** |
+| S3 | Tiết muộn 11 hoặc 12; trọng số **1** |
 | S4 | Buổi cùng assignment bị dồn vào cùng ngày; trọng số **5** |
 | Selection | Tournament 3 cá thể, lấy fitness nhỏ nhất |
 | Crossover | Uniform theo gene; xác suất lai một cặp 0.85 |
@@ -126,22 +126,24 @@ Core GA dùng thư viện chuẩn Python, không dùng DEAP/PyGAD.
 
 ## Kết quả thực nghiệm đã lưu
 
-Nguồn: [raw_runs.csv](results/benchmark/raw_runs.csv),
-[summary.csv](results/benchmark/summary.csv),
-[metadata.json](results/benchmark/metadata.json), đo ngày 09/11/2026.
+Nguồn: [raw_runs.csv](results/benchmark_12periods/raw_runs.csv),
+[summary.csv](results/benchmark_12periods/summary.csv),
+[metadata.json](results/benchmark_12periods/metadata.json), đo lại ngày 13/11/2026 với 12 tiết/ngày và S3 ở tiết 11–12.
 Cùng sample, seeds 11/22/33 và đúng 2.000 evaluations mỗi run.
 
 | Phương pháp | Runs H=0 | Median H | Median S chỉ khi H=0 | Median runtime giây |
 |---|---:|---:|---:|---:|
-| GA | 3/3 | 0 | 3 | 0.5917 |
-| Greedy | 3/3 | 0 | 0 | 0.5235 |
-| Random Search | 2/3 | 0 | 19.5 | 0.4918 |
+| GA | 3/3 | 0 | 0 | 0.8710 |
+| Greedy | 3/3 | 0 | 8 | 0.7418 |
+| Random Search | 3/3 | 0 | 11 | 0.8455 |
 
-**Greedy có điểm mềm tốt hơn GA trong lần đo này.** Random seed 11 còn H=2;
-điểm mềm của run đó không tham gia median mềm khả thi. Greedy là multi-start
-coordinate sweep trên lịch đầy đủ, thử nhiều candidate, không đơn giản chọn ô trống đầu tiên.
+**Cả ba phương pháp đạt H=0 ở cả ba seeds; GA có median S=0, thấp hơn
+Greedy (8) và Random Search (11) trong lần đo mô hình mới.** Không so trực tiếp
+điểm với bộ số đo 8 tiết cũ vì miền lựa chọn và định nghĩa S3 đã đổi. Bộ cũ vẫn
+được giữ tại results/benchmark để truy vết. Greedy là multi-start coordinate
+sweep trên lịch đầy đủ, thử nhiều candidate của từng event.
 
-![Đường hội tụ GA từ dữ liệu thực nghiệm](results/benchmark/convergence.png)
+![Đường hội tụ GA từ dữ liệu thực nghiệm](results/benchmark_12periods/convergence.png)
 
 Chỉ có ba seeds và dataset nhỏ giả lập. Kết quả chưa đủ để kết luận GA vượt trội
 nói chung hoặc đạt tối ưu toàn cục. Cùng số evaluations không đồng nghĩa cùng runtime.
@@ -175,7 +177,7 @@ src/timetable_ga/
 data/sample/               Dữ liệu giả lập
 data/fixtures/             Witness chỉ phục vụ kiểm thử
 tests/                     Kiểm thử tự động
-results/benchmark/         Số đo và lịch/history của 9 runs
+results/benchmark_12periods/         Số đo và lịch/history của 9 runs
 docs/                      Schema, ràng buộc và tài liệu giải thích code
 reports/                   Báo cáo Word và ảnh minh chứng
 ```

@@ -2,7 +2,7 @@
 
 ## Đầu bài
 
-Xếp **thời khóa biểu 1 tuần** cho **24 buổi học** thuộc dataset giả lập `data/sample`: 5 ngày × 8 tiết/ngày (4 sáng + 4 chiều); mỗi buổi thuộc một lớp sinh viên, một giảng viên, một học phần và chiếm một phòng trong **2 tiết liên tiếp**. Không phá các `duration_periods` từ CSV, code vẫn nên xử lý 1..4 trong cùng ca theo docs/02.
+Xếp **thời khóa biểu 1 tuần** cho **24 buổi học** thuộc dataset giả lập `data/sample`: 5 ngày × 12 tiết/ngày (4 sáng + 4 chiều + 4 tối); mỗi buổi thuộc một lớp sinh viên, một giảng viên, một học phần và chiếm một phòng trong **2 tiết liên tiếp**. Không phá các `duration_periods` từ CSV, code vẫn nên xử lý 1..4 trong cùng ca theo docs/02.
 
 ## P0 — Must have
 

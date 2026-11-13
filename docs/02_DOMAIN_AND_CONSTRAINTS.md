@@ -10,12 +10,12 @@
 - `Course`: course_id, course_name.
 - `Assignment`: assignment_id, course_id, group_id, teacher_id, sessions_per_week, duration_periods, required_room_type.
 - `Event`: event_id, assignment_id, derived group_id, teacher_id, course_id, size, duration (sinh từ assignment).
-- `TimeSlot`: day ∈ {Mon,Tue,Wed,Thu,Fri}, period ∈ {1..8}, block ∈ {morning,afternoon}, start/end.
+- `TimeSlot`: day ∈ {Mon,Tue,Wed,Thu,Fri}, period ∈ {1..12}, block ∈ {morning,afternoon,evening}, start/end.
 - `Placement`: (day, start_period, room_id), occupancy là mọi `(day, period)` từ start tới start+duration-1.
 
 ## Quy tắc thời gian
 
-- Mon–Fri: tiết 1..4 buổi sáng, 5..8 buổi chiều; tiết học phải chiếm **các period liên tiếp trong cùng block**. Không xếp sự kiện bắt đầu vào tiết 4 khi duration=2; cũng không xếp 8 với duration=2. Không được đi qua ngày khác.
+- Mon–Fri: tiết 1..4 buổi sáng, 5..8 buổi chiều, 9..12 buổi tối; tiết học phải chiếm **các period liên tiếp trong cùng block**. Không xếp sự kiện bắt đầu vào tiết 4 khi duration=2; cũng không xếp 8 hoặc 12 với duration=2. Không được đi qua ngày khác.
 - Mỗi sự kiện chọn **chính xác một** placement thuộc candidate domain; không chọn cùng lúc hai phòng.
 - Teacher/room unavailable được khai báo theo từng `(id, day, period)`; nếu bất kỳ tiết chiếm nào trùng unavailable thì placement bị cấm.
 
@@ -45,7 +45,7 @@ H8. **Ca học**: liên tiếp, không vượt quá 1 ca hoặc lịch tuần.
 |---|---|---|---:|
 | S1 | Không hợp preference GV | số occupied periods trong danh sách `avoid` | 3 |
 | S2 | Khoảng trống nhóm trong 1 ca | số period trống giữa min/max occupied period trong mỗi group/day/block | 2 |
-| S3 | Tiết cuối ngày | số occupied periods ở period 7 hoặc 8 | 1 |
+| S3 | Tiết cuối ngày | số occupied periods ở period 11 hoặc 12 | 1 |
 | S4 | Cùng assignment dồn một ngày | với mỗi assignment, `max(0, sessions - distinct_days)` | 5 |
 | S5 | Phòng quá rộng | tổng `max(0, room.capacity - group.size)` trên mỗi event, chia 10 | 0.2 |
 | S6 | Một assignment nhiều phòng | `max(0, distinct_rooms_for_assignment - 1)` | 2 |
